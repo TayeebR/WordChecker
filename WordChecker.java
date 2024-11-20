@@ -2,7 +2,14 @@ import java.util.ArrayList;
 
 public class WordChecker {
 
-    private ArrayList<String> wordList;wordList=new ArrayList<String>();
+    private ArrayList<String> wordList;
+    public WordChecker(ArrayList<String> list)
+    {
+        wordList = list;
+    }
+public WordChecker() {
+    wordList = new ArrayList<String>();
+}
 
     /**
      * Returns true if each element of wordList (except the first) contains the
@@ -16,12 +23,19 @@ public class WordChecker {
         for (int i = 1; i < wordList.size(); i++) {
             String after = wordList.get(i);
             String before = wordList.get(i - 1);
-        }
-        if(after.indexof(before) < 0) return false;
-        else return true; 
+        if(after.indexOf(before) < 0) return false; 
+    }
+        return true; 
 
     }
 
     public ArrayList<String> createList(String target) {
-        /* to be implemented in part (b) */ }
+        ArrayList<String> list = new ArrayList<String>();
+        for (String s : wordList) {
+            if(s.indexOf(target) == 0 ) {
+                list.add(s.substring(target.length()));
+            }
+        }
+        return list;
+}
 }
